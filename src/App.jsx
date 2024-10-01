@@ -1,10 +1,15 @@
-import { useState } from 'react'
+import { useState } from "react"
+import CategorySelect from "./components/CategorySelect"
 
 function App() {
+  const [selectedCategory, setSelectedCategory] = useState(0);
+
+  const handleCategoryOnChange = (value) => {
+    setSelectedCategory(parseInt(value))
+  }
+
   return (
-    <h1>
-      Un texto aqui
-    </h1>
+    <CategorySelect onSelect={handleCategoryOnChange} selected={selectedCategory} />
   )
 }
 
