@@ -1,10 +1,11 @@
 import PropTypes from "prop-types";
 import Select from "./Select";
 import useCategoryRequest from "../hooks/useCategoryRequest";
+import LoadingIndicator from "./LoadingIndicator";
 
 const CategorySelect = ({ selected, onSelect }) => {
 
-  const { result } = useCategoryRequest();
+  const { result, loading } = useCategoryRequest();
 
   const options = result.map(option => ({
     value: option.id,
@@ -12,11 +13,13 @@ const CategorySelect = ({ selected, onSelect }) => {
   }));
 
   return (
-    <Select
-      onSelect={onSelect}
-      options={options}
-      selected={selected}
-    />
+    loading ?
+      <LoadingIndicator /> :
+      <Select
+        onSelect={onSelect}
+        options={options}
+        selected={selected}
+      />
   );
 }
 
