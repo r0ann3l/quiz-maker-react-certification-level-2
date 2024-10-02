@@ -1,21 +1,20 @@
 import { useState } from "react";
 
-const useRequest = (initialResults = []) => {
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
+const useRequest = (initialResults = []) => {
   const [result, setResult] = useState(initialResults);
   const [loading, setLoading] = useState(false);
 
-  const makeRequest = (url) => {
+  const makeRequest = (path) => {
     setLoading(true);
 
-    fetch(url)
-    .then(response => response.json())
-    .then(response => {
-      setResult(response);
-    })
-    .finally(() => {
-      setLoading(false);
-    })
+    fetch(BASE_URL + path)
+      .then(response => response.json())
+      .then(setResult)
+      .finally(() => {
+        setLoading(false);
+      })
   }
 
   return {

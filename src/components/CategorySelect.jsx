@@ -4,7 +4,6 @@ import useCategoryRequest from "../hooks/useCategoryRequest";
 import LoadingIndicator from "./LoadingIndicator";
 
 const CategorySelect = ({ selected, onSelect }) => {
-
   const { result, loading } = useCategoryRequest();
 
   const options = result.map(option => ({
@@ -16,6 +15,7 @@ const CategorySelect = ({ selected, onSelect }) => {
     loading ?
       <LoadingIndicator /> :
       <Select
+        id="categorySelect"
         onSelect={onSelect}
         options={options}
         selected={selected}

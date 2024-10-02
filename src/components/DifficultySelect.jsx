@@ -3,15 +3,15 @@ import Select from "./Select";
 
 const options = [
   {
-    name: 1,
+    name: 'easy',
     value: 'Easy'
   },
   {
-    name: 2,
+    name: 'medium',
     value: 'Medium'
   },
   {
-    name: 3,
+    name: 'hard',
     value: 'Hard'
   }
 ];
@@ -19,6 +19,7 @@ const options = [
 const DifficultySelect = ({ selected, onSelect }) => {
   return (
     <Select
+      id="difficultySelect"
       onSelect={onSelect}
       options={options}
       selected={selected}
@@ -28,7 +29,7 @@ const DifficultySelect = ({ selected, onSelect }) => {
 }
 
 DifficultySelect.propTypes = {
-  selected: PropTypes.number,
+  selected: PropTypes.string,
   onSelect: PropTypes.func.isRequired
 }
 

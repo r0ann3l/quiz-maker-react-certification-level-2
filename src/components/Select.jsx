@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 
-const Select = ({ options, selected, onSelect, emptyOption }) => {
+const Select = ({ id, options, selected, onSelect, emptyOption }) => {
   const handleOnChange = (event) => {
     onSelect(event.target.value);
   }
 
   return (
-    <select onChange={handleOnChange} value={selected}>
+    <select id={id} onChange={handleOnChange} value={selected}>
       {
         emptyOption ?
           <option>{emptyOption}</option> :
@@ -26,13 +26,14 @@ const Select = ({ options, selected, onSelect, emptyOption }) => {
 Select.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
-      value: PropTypes.number,
+      value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
       name: PropTypes.string,
     })
   ).isRequired,
-  selected: PropTypes.number,
+  selected: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   onSelect: PropTypes.func.isRequired,
-  emptyOption: PropTypes.string
+  emptyOption: PropTypes.string,
+  id: PropTypes.string.isRequired
 }
 
 export default Select;

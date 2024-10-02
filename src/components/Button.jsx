@@ -1,16 +1,18 @@
 import PropTypes from "prop-types";
 
-const Button = ({ children, onClick }) => {
+const Button = ({ type, children, onClick = () => { }, id }) => {
   return (
-    <button onClick={onClick}>
+    <button id={id} type={type} onClick={onClick}>
       {children}
     </button>
   );
 }
 
 Button.propTypes = {
-  children: PropTypes.element,
-  onClick: PropTypes.func.isRequired
+  type: PropTypes.oneOf(["submit"]),
+  children: PropTypes.any,
+  onClick: PropTypes.func,
+  id: PropTypes.string.isRequired
 }
 
 export default Button;

@@ -5,7 +5,7 @@ const useCategoryRequest = () => {
   const {makeRequest, loading, result} = useRequest({});
 
   useEffect(() => {
-    makeRequest("https://opentdb.com/api_category.php")
+    makeRequest("api_category.php")
   }, []) 
 
   return {
