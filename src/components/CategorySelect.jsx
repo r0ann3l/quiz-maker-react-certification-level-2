@@ -19,6 +19,7 @@ const CategorySelect = ({ selected, onSelect }) => {
         onSelect={onSelect}
         options={options}
         selected={selected}
+        emptyOption='Select category'
       />
   );
 }
