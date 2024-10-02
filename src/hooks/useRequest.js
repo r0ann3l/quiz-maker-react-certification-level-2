@@ -7,6 +7,7 @@ const useRequest = (initialResults = []) => {
   const [loading, setLoading] = useState(false);
 
   const makeRequest = (path) => {
+    console.log(path);
     setLoading(true);
 
     fetch(BASE_URL + path)

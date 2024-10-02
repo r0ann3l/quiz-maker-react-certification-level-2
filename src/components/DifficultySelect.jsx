@@ -3,16 +3,16 @@ import Select from "./Select";
 
 const options = [
   {
-    name: 'easy',
-    value: 'Easy'
+    name: 'Easy',
+    value: 'easy'
   },
   {
-    name: 'medium',
-    value: 'Medium'
+    name: 'Medium',
+    value: 'medium'
   },
   {
-    name: 'hard',
-    value: 'Hard'
+    name: 'Hard',
+    value: 'hard'
   }
 ];
 

@@ -9,7 +9,7 @@ const useQuestionRequest = () => {
 
   return {
     makeRequest,
-    result,
+    result: result.results,
     loading
   }
 }
