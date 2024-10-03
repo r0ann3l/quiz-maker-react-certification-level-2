@@ -4,7 +4,13 @@ import Answer from "./Answer";
 const Answers = ({ answers, selectedAnswer, correctAnswer, showResults }) => {
   return (
     answers.map(answer => (
-      <Answer key={answer} answer={answer} />
+      <Answer
+        key={answer}
+        answer={answer}
+        selected={selectedAnswer === answer}
+        correct={selectedAnswer === correctAnswer}
+        showResults={showResults}
+      />
     ))
   )
 }
