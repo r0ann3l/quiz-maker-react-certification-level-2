@@ -1,17 +1,25 @@
 import PropTypes from "prop-types";
 import Button from "./Button";
+import { useContext } from "react";
+import { QuestionsAndAnswersContext } from "../contexts/QuestionsAndAnswersContext";
 
-const Answer = ({ answer, onClick }) => {
+const Answer = ({ question, answer }) => {
+  const { selectAnswer } = useContext(QuestionsAndAnswersContext);
+
+  const handleOnClick = () => {
+    selectAnswer(question, answer)
+  }
+
   return (
-    <Button onClick={onClick}>
+    <Button onClick={handleOnClick}>
       {answer}
     </Button>
   )
 }
 
 Answer.propTypes = {
-  answer: PropTypes.string,
-  onClick: PropTypes.func
+  question: PropTypes.string,
+  answer: PropTypes.string
 }
 
 export default Answer;

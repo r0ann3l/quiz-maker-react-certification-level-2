@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import Answer from "./Answer";
 
-const Answers = ({ answers }) => {
+const Answers = ({ answers, selectedAnswer, correctAnswer, showResults }) => {
   return (
-    (answers || []).map(answer => (
+    answers.map(answer => (
       <Answer key={answer} answer={answer} />
     ))
   )
@@ -11,6 +11,9 @@ const Answers = ({ answers }) => {
 
 Answers.propTypes = {
   answers: PropTypes.array,
+  selectedAnswer: PropTypes.string,
+  correctAnswer: PropTypes.string,
+  showResults: PropTypes.bool,
 }
 
 export default Answers;

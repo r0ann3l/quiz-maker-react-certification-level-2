@@ -1,23 +1,23 @@
-import PropTypes from "prop-types";
 import Question from "./Question";
 import Answers from "./Answers";
-import { randomizeAnswers } from "../utils/answers";
+import { useContext } from "react";
+import { QuestionsAndAnswersContext } from "../contexts/QuestionsAndAnswersContext";
 
-const Questions = ({ questions }) => {
+const Questions = () => {
+  const { questionsData } = useContext(QuestionsAndAnswersContext);
+
   return (
-    (questions || []).map(question => (
-      <div key={question.question}>
-        <Question question={question.question} />
+    questionsData.map(datum => (
+      <div key={datum.question}>
+        <Question question={datum.question} />
         <Answers
-          answers={randomizeAnswers([question.correct_answer, ...question.incorrect_answers])}
+          answers={datum.answers}
+          selectedAnswer={datum.selectedAnswer}
+          correctAnswer={datum.correctAnswer}
         />
       </div>
     ))
   );
-}
-
-Questions.propTypes = {
-  questions: PropTypes.array,
 }
 
 export default Questions;
