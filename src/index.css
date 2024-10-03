@@ -1,7 +1,19 @@
-button.selected, button.correct {
+button.selected, button.correct, button:hover {
   background-color: green;
 }
 
 button.incorrect {
   background-color: red;
+}
+
+p.bad-score {
+  background-color: red;
+}
+
+p.regular-score {
+  background-color: yellow;
+}
+
+p.good-score {
+  background-color: green;
 }

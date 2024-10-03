@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import Select from "./Select";
+import Select from "../../../components/Select";
 
 const options = [
   {

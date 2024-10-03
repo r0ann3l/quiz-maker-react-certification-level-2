@@ -1,13 +1,11 @@
 import PropTypes from "prop-types";
 import Button from "./Button";
-import { useContext } from "react";
-import { QuestionsAndAnswersContext } from "../contexts/QuestionsAndAnswersContext";
 
-const Answer = ({ question, answer, selected, correct, showResults }) => {
-  const { selectAnswer } = useContext(QuestionsAndAnswersContext);
+const Answer = ({ answer, selected, correct, showResults, onSelect }) => {
 
   const handleOnClick = () => {
-    selectAnswer(question, answer)
+    console.log(answer)
+    onSelect(answer)
   }
 
   const getClassName = () => {
@@ -34,11 +32,11 @@ const Answer = ({ question, answer, selected, correct, showResults }) => {
 }
 
 Answer.propTypes = {
-  question: PropTypes.string,
   answer: PropTypes.string,
   selected: PropTypes.bool,
   correct: PropTypes.bool,
   showResults: PropTypes.bool,
+  onSelect: PropTypes.func,
 }
 
 export default Answer;

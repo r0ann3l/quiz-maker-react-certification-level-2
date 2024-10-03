@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
-import Select from "./Select";
-import useCategoryRequest from "../hooks/useCategoryRequest";
-import LoadingIndicator from "./LoadingIndicator";
+import Select from "../../../components/Select";
+import useCategoryRequest from "../../../hooks/useCategoryRequest";
+import LoadingIndicator from "../../../components/LoadingIndicator";
 
 const CategorySelect = ({ selected, onSelect }) => {
   const { result, loading } = useCategoryRequest();

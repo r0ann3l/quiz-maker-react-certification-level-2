@@ -1,11 +1,8 @@
-import { createContext, useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import useQuestionRequest from "../hooks/useQuestionRequest";
+import { useEffect, useState } from "react";
 import { randomizeAnswers } from "../utils/answers";
+import useQuestionRequest from "./useQuestionRequest";
 
-export const QuestionsAndAnswersContext = createContext();
-
-const QuestionsAndAnswersContextProvider = ({ children }) => {
+const useQuestionsAndAnswers = () => {
   const { makeRequest, result } = useQuestionRequest();
 
   const [questionsData, setQuestionsData] = useState([]);
@@ -24,6 +21,7 @@ const QuestionsAndAnswersContextProvider = ({ children }) => {
   }, [result])
 
   const selectAnswer = (question, answer) => {
+    console.log(question, answer, questionsData.findIndex(item => item.question === question));
     const currentQuestionDataIndex = questionsData.findIndex(item => item.question === question);
 
     if (currentQuestionDataIndex === -1) {
@@ -50,30 +48,12 @@ const QuestionsAndAnswersContextProvider = ({ children }) => {
     return questionsData.findIndex(item => item.selectAnswer === null) === -1;
   }
 
-  const totalQuestions = () => {
-    return questionsData.length;
+  return {
+    questionsData,
+    selectAnswer,
+    requestQuestions: makeRequest,
+    isQuizCompleted,
   }
-
-  const totalCorrectAnswers = () => {
-    return questionsData.filter(item => item.selectedAnswer === item.correctAnswer).length;
-  }
-
-  return (
-    <QuestionsAndAnswersContext.Provider value={{
-      questionsData,
-      selectAnswer,
-      requestQuestions: makeRequest,
-      isQuizCompleted,
-      totalQuestions,
-      totalCorrectAnswers
-    }}>
-      {children}
-    </QuestionsAndAnswersContext.Provider>
-  );
 }
 
-QuestionsAndAnswersContextProvider.propTypes = {
-  children: PropTypes.element,
-}
-
-export default QuestionsAndAnswersContextProvider;
+export default useQuestionsAndAnswers;
