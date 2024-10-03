@@ -1,0 +1,7 @@
+const NewQuiz = () => {
+  return (
+    <h1>NewQuiz</h1>
+  );
+}
+
+export default NewQuiz;
