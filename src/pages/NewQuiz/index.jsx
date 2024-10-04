@@ -6,8 +6,11 @@ import PageTitle from "../../components/PageTitle";
 import QuestionsAndAnswers from "../../components/QuestionsAndAnswers";
 import useQuestionsAndAnswers from "../../hooks/useQuestionsAndAnswers";
 import SubmitButton from "./components/SubmitButton";
+import { useNavigate } from "react-router-dom";
 
 const NewQuiz = () => {
+  const navigate = useNavigate();
+
   const [selectedCategory, setSelectedCategory] = useState(0);
   const [selectedDifficulty, setSelectedDifficulty] = useState('');
 
@@ -26,10 +29,8 @@ const NewQuiz = () => {
   }
 
   const handleOnSubmitQuiz = () => {
-
+    navigate('/results', { state: { questionsData } })
   }
-
-  console.log(questionsData)
 
   return (
     <>

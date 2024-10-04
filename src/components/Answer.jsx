@@ -4,7 +4,6 @@ import Button from "./Button";
 const Answer = ({ answer, selected, correct, showResults, onSelect }) => {
 
   const handleOnClick = () => {
-    console.log(answer)
     onSelect(answer)
   }
 
