@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import Answer from "./Answer";
 
 const Answers = ({ answers, selectedAnswer, correctAnswer, showResults, onSelect }) => {
-  console.log('asdasd', selectedAnswer, correctAnswer, answers)
   return (
     answers.map(answer => (
       <Answer

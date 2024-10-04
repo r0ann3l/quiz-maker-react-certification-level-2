@@ -21,7 +21,6 @@ const useQuestionsAndAnswers = () => {
   }, [result])
 
   const selectAnswer = (question, answer) => {
-    console.log(question, answer, questionsData.findIndex(item => item.question === question));
     const currentQuestionDataIndex = questionsData.findIndex(item => item.question === question);
 
     if (currentQuestionDataIndex === -1) {
