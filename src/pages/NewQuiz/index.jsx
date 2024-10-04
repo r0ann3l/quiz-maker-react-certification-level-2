@@ -34,17 +34,28 @@ const NewQuiz = () => {
 
   return (
     <>
-      <PageTitle title='QUIZ MAKER' />
-      <div>
-        <CategorySelect onSelect={handleCategoryOnChange} selected={selectedCategory} />
-        <DifficultySelect onSelect={handleDifficultyOnChange} selected={selectedDifficulty} />
-        <CreateButton onClick={handleOnCreateQuiz} />
-      </div>
-      <QuestionsAndAnswers questionsData={questionsData} onSelect={selectAnswer} />
-      {
-        questionsData.length !== 0 && questionsData.findIndex(item => item.selectedAnswer === null) === -1 &&
-        <SubmitButton onClick={handleOnSubmitQuiz} />
-      }
+      <header>
+        <PageTitle title='QUIZ MAKER' />
+      </header>
+
+      <main>
+        <section id="filters">
+          <CategorySelect onSelect={handleCategoryOnChange} selected={selectedCategory} />
+          <DifficultySelect onSelect={handleDifficultyOnChange} selected={selectedDifficulty} />
+          <CreateButton onClick={handleOnCreateQuiz} />
+        </section>
+
+        <section id="questions-answers">
+          <QuestionsAndAnswers questionsData={questionsData} onSelect={selectAnswer} />
+        </section>
+
+        <section id="actions">
+          {
+            questionsData.length !== 0 && questionsData.findIndex(item => item.selectedAnswer === null) === -1 &&
+            <SubmitButton onClick={handleOnSubmitQuiz} />
+          }
+        </section>
+      </main>
     </>
   )
 }

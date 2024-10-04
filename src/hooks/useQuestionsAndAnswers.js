@@ -29,7 +29,7 @@ const useQuestionsAndAnswers = () => {
 
     const currentQuestionData = questionsData[currentQuestionDataIndex];
 
-    if (currentQuestionData.selectedAnswer === null) {
+    if (currentQuestionData.selectedAnswer === null || currentQuestionData.selectedAnswer != answer) {
       // It means we must select this answer
       currentQuestionData.selectedAnswer = answer;
     } else {

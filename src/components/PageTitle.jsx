@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 const PageTitle = ({ title }) => {
   return (
-    <h1>{title}</h1>
+    <h1 id="page-title">{title}</h1>
   );
 }
 

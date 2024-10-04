@@ -3,16 +3,20 @@ import Answer from "./Answer";
 
 const Answers = ({ answers, selectedAnswer, correctAnswer, showResults, onSelect }) => {
   return (
-    answers.map(answer => (
-      <Answer
-        key={answer}
-        answer={answer}
-        selected={selectedAnswer === answer}
-        correct={correctAnswer === answer}
-        showResults={showResults}
-        onSelect={onSelect}
-      />
-    ))
+    <div className="answers">
+      {
+        answers.map(answer => (
+          <Answer
+            key={answer}
+            answer={answer}
+            selected={selectedAnswer === answer}
+            correct={correctAnswer === answer}
+            showResults={showResults}
+            onSelect={onSelect}
+          />
+        ))
+      }
+    </div>
   )
 }
 

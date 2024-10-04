@@ -1,9 +1,61 @@
-button.selected, button.correct, button:hover {
-  background-color: green;
+body {
+  max-width: 1000px;
 }
 
-button.incorrect {
+#page-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#filters {
+  display: flex;
+  flex-direction: row;
+  justify-content: baseline;
+  gap: 4px;
+  margin-bottom: 30px;
+}
+
+#filters select {
+  flex: 1;
+}
+
+#questions-answers {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#questions-answers .question {
+  margin-bottom: 20px;
+}
+
+#questions-answers .answers {
+  
+}
+
+#questions-answers .answers button:disabled {
+  opacity: 1;
+}
+
+#questions-answers .answers button.selected,
+#questions-answers .answers button.correct,
+#questions-answers .answers button:hover:not(:disabled) {
+  background-color: #198754;
+}
+
+#questions-answers .answers button.incorrect {
   background-color: red;
+}
+
+#actions {
+  max-width: 800px;
+  margin: 30px auto 0;
+}
+
+#actions button {
+  width: 100%;
 }
 
 p.bad-score {
