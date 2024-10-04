@@ -3,9 +3,11 @@ import PageTitle from "../../components/PageTitle";
 import QuestionsAndAnswers from "../../components/QuestionsAndAnswers";
 import FinalScore from "./components/FinalScore";
 import NewQuizButton from "./components/NewQuizButton";
+import EmptyResults from "./components/EmptyResults";
 
 const Results = () => {
-  let { state: { questionsData } } = useLocation();
+  const { state } = useLocation();
+  const questionsData = state?.questionsData;
 
   const totalQuestions = () => {
     return questionsData.length;
@@ -18,8 +20,14 @@ const Results = () => {
   return (
     <>
       <PageTitle title='RESULTS' />
-      <QuestionsAndAnswers questionsData={questionsData} showResults />
-      <FinalScore totalQuestions={totalQuestions()} correctAnswers={totalCorrectAnswers()} />
+      {
+        questionsData ?
+          <>
+            <QuestionsAndAnswers questionsData={questionsData} showResults />
+            <FinalScore totalQuestions={totalQuestions()} correctAnswers={totalCorrectAnswers()} />
+          </> :
+          <EmptyResults />
+      }
       <NewQuizButton />
     </>
   );
