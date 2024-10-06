@@ -1,20 +1,16 @@
 import PropTypes from "prop-types";
+import classNames from "classnames";
 
 const FinalScore = ({ correctAnswers, totalQuestions }) => {
-  const getClassName = () => {
-    if (correctAnswers < 2) {
-      return 'bad-score';
-    }
-
-    if (correctAnswers > 3) {
-      return 'good-score';
-    }
-
-    return 'regular-score';
-  }
-
   return (
-    <p className={getClassName()}>
+    <p
+      id='final-score'
+      className={classNames({
+        'bad-score': correctAnswers < 2,
+        'good-score': correctAnswers > 3,
+        'regular-score': correctAnswers >= 2 && correctAnswers <= 3
+      })}
+    >
       You scored {correctAnswers} out of {totalQuestions}
     </p>
   );

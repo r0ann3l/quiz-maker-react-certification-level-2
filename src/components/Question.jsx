@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 const Question = ({ question }) => {
   return (
-    <span className="question">{question}</span>
+    <h4 className="question">{question}</h4>
   );
 }
 

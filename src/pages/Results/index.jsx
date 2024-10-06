@@ -19,16 +19,28 @@ const Results = () => {
 
   return (
     <>
-      <PageTitle title='RESULTS' />
-      {
-        questionsData ?
-          <>
-            <QuestionsAndAnswers questionsData={questionsData} showResults />
-            <FinalScore totalQuestions={totalQuestions()} correctAnswers={totalCorrectAnswers()} />
-          </> :
-          <EmptyResults />
-      }
-      <NewQuizButton />
+      <header>
+        <PageTitle title='RESULTS' />
+      </header>
+
+      <main>
+        <section id="questions-answers">
+          {
+            questionsData ?
+              <QuestionsAndAnswers questionsData={questionsData} showResults /> :
+              <EmptyResults />
+          }
+        </section>
+
+        <section id="actions">
+          {
+            questionsData ?
+              <FinalScore totalQuestions={totalQuestions()} correctAnswers={totalCorrectAnswers()} /> :
+              null
+          }
+          <NewQuizButton />
+        </section>
+      </main>
     </>
   );
 }

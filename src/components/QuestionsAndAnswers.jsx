@@ -1,21 +1,29 @@
 import PropTypes from "prop-types";
 import Question from "./Question";
 import Answers from "./Answers";
+import LoadingIndicator from "./LoadingIndicator";
 
-const QuestionsAndAnswers = ({ questionsData, showResults = false, onSelect = () => { } }) => {
+const QuestionsAndAnswers = ({
+  questionsData,
+  loading = false,
+  showResults = false,
+  onSelect = () => { }
+}) => {
   return (
-    questionsData.map(datum => (
-      <div key={datum.question}>
-        <Question question={datum.question} />
-        <Answers
-          answers={datum.answers}
-          selectedAnswer={datum.selectedAnswer}
-          correctAnswer={datum.correctAnswer}
-          showResults={showResults}
-          onSelect={(answer) => onSelect(datum.question, answer)}
-        />
-      </div>
-    ))
+    loading ?
+      <LoadingIndicator /> :
+      questionsData.map(questionDatum => (
+        <div key={questionDatum.question}>
+          <Question question={questionDatum.question} />
+          <Answers
+            answers={questionDatum.answers}
+            selectedAnswer={questionDatum.selectedAnswer}
+            correctAnswer={questionDatum.correctAnswer}
+            showResults={showResults}
+            onSelect={(answer) => onSelect(questionDatum.question, answer)}
+          />
+        </div>
+      ))
   );
 }
 
@@ -28,6 +36,7 @@ QuestionsAndAnswers.propTypes = {
       answers: PropTypes.arrayOf(PropTypes.string).isRequired
     })
   ),
+  loading: PropTypes.bool,
   showResults: PropTypes.bool,
   onSelect: PropTypes.func,
 }
