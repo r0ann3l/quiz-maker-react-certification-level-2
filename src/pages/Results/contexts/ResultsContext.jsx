@@ -18,7 +18,7 @@ const ResultsContextProvider = ({ children }) => {
 }
 
 ResultsContextProvider.propTypes = {
-  children: PropTypes.any
+  children: PropTypes.node
 }
 
 export default ResultsContextProvider;

@@ -9,7 +9,7 @@ const QuestionsAnswersSection = ({ children }) => {
 }
 
 QuestionsAnswersSection.propTypes = {
-  children: PropTypes.any
+  children: PropTypes.node
 }
 
 export default QuestionsAnswersSection;

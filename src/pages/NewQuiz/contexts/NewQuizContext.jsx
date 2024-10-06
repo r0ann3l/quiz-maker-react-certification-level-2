@@ -64,7 +64,7 @@ const NewQuizContextProvider = ({ children }) => {
 }
 
 NewQuizContextProvider.propTypes = {
-  children: PropTypes.any
+  children: PropTypes.node
 }
 
 export default NewQuizContextProvider;

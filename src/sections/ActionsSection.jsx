@@ -9,7 +9,7 @@ const ActionsSection = ({ children }) => {
 }
 
 ActionsSection.propTypes = {
-  children: PropTypes.any
+  children: PropTypes.node
 }
 
 export default ActionsSection;
