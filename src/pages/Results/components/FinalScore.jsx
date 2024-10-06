@@ -1,24 +1,26 @@
-import PropTypes from "prop-types";
+import { useContext } from "react";
 import classNames from "classnames";
+import { ResultsContext } from "../contexts/ResultsContext";
 
-const FinalScore = ({ correctAnswers, totalQuestions }) => {
+const FinalScore = () => {
+  const { questionsData } = useContext(ResultsContext);
+
+  const totalQuestions = questionsData.length;
+
+  const totalCorrectAnswers = questionsData.filter(item => item.selectedAnswer === item.correctAnswer).length;
+
   return (
     <p
       id='final-score'
       className={classNames({
-        'bad-score': correctAnswers < 2,
-        'good-score': correctAnswers > 3,
-        'regular-score': correctAnswers >= 2 && correctAnswers <= 3
+        'bad-score': totalCorrectAnswers < 2,
+        'good-score': totalCorrectAnswers > 3,
+        'regular-score': totalCorrectAnswers >= 2 && totalCorrectAnswers <= 3
       })}
     >
-      You scored {correctAnswers} out of {totalQuestions}
+      You scored {totalCorrectAnswers} out of {totalQuestions}
     </p>
   );
-}
-
-FinalScore.propTypes = {
-  correctAnswers: PropTypes.number,
-  totalQuestions: PropTypes.number
 }
 
 export default FinalScore;

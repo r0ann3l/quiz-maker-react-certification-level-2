@@ -1,6 +1,8 @@
 const EmptyResults = () => {
   return (
-    <h2>You have not completed the Quiz yet. Please, create a new quiz</h2>
+    <h2 className="empty-results-message">
+      You have not completed the Quiz yet. Please, create a new quiz
+    </h2>
   );
 }
 
