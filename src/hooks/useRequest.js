@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+const BASE_URL = 'https://opentdb.com/';
 
 const useRequest = (initialResults = []) => {
   const [result, setResult] = useState(initialResults);

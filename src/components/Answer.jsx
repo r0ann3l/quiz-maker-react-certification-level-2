@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import Button from "./Button";
 import classnames from 'classnames';
+import he from 'he';
 
 const Answer = ({ answer, selected, correct, showResults, onSelect }) => {
 
@@ -21,7 +22,7 @@ const Answer = ({ answer, selected, correct, showResults, onSelect }) => {
       onClick={handleOnClick}
       disabled={showResults}
     >
-      {answer}
+      {he.decode(answer)}
     </Button>
   )
 }
