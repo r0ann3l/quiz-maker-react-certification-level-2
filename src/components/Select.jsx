@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const Select = ({ id, options, selected, onSelect, emptyOption }) => {
+const Select = ({ id, options, selected, onSelect, emptyOption, emptyOptionValue = 0 }) => {
   const handleOnChange = (event) => {
     onSelect(event.target.value);
   }
@@ -9,7 +9,7 @@ const Select = ({ id, options, selected, onSelect, emptyOption }) => {
     <select id={id} onChange={handleOnChange} value={selected}>
       {
         emptyOption ?
-          <option>{emptyOption}</option> :
+          <option value={emptyOptionValue}>{emptyOption}</option> :
           null
       }
       {
@@ -33,6 +33,7 @@ Select.propTypes = {
   selected: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   onSelect: PropTypes.func.isRequired,
   emptyOption: PropTypes.string,
+  emptyOptionValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   id: PropTypes.string.isRequired
 }
 

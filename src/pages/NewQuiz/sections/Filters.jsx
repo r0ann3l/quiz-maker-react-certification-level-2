@@ -4,13 +4,16 @@ import CreateButton from "../components/CreateButton";
 import DifficultySelect from "../components/DifficultySelect";
 import ErrorMessage from "../../../components/ErrorMessage";
 import { NewQuizContext } from "../contexts/NewQuizContext";
+import { newQuizSchema } from "../../../validations/new_quiz";
+import useValidations from "../../../hooks/useValidations";
 
 const Filters = () => {
+  const { requestQuestions } = useContext(NewQuizContext);
+
   const [selectedCategory, setSelectedCategory] = useState(0);
   const [selectedDifficulty, setSelectedDifficulty] = useState('');
-  const [errorMessage, setErrorMessage] = useState();
 
-  const { requestQuestions } = useContext(NewQuizContext);
+  const { validate, errorMessage } = useValidations(newQuizSchema);
 
   const handleCategoryOnChange = (value) => {
     setSelectedCategory(parseInt(value))
@@ -21,12 +24,12 @@ const Filters = () => {
   }
 
   const handleOnCreateQuiz = () => {
-    if (selectedCategory && selectedDifficulty) {
+    validate({
+      category: selectedCategory,
+      difficulty: selectedDifficulty
+    }, () => {
       requestQuestions(selectedCategory, selectedDifficulty);
-      setErrorMessage(undefined);
-    } else {
-      setErrorMessage('You must select one category and a difficulty level, before crating a new Quiz')
-    }
+    })
   }
 
   return (

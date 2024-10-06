@@ -24,6 +24,7 @@ const DifficultySelect = ({ selected, onSelect }) => {
       options={options}
       selected={selected}
       emptyOption='Select difficulty'
+      emptyOptionValue=''
     />
   );
 }
